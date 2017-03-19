@@ -31,6 +31,8 @@ public class Waiter extends Staff {
 	{
 		
 		System.out.println("Running");
+		System.out.println("Running");
+		System.out.println("Running");
 		
 //		Waiter wt = new Waiter();
 //		wt.setId(1);
