@@ -1,5 +1,7 @@
 package by.training.nc.dev3.beans;
 
+import java.util.Objects;
+
 import by.training.nc.dev3.interfaces.ClientActions;
 
 public class Client implements ClientActions {
@@ -15,6 +17,8 @@ public class Client implements ClientActions {
 		super();
 	}
 	
+	
+
 	public Client(Float cash, Menu menu, Order order, Bill bill )
 	{
 		super();
@@ -22,6 +26,35 @@ public class Client implements ClientActions {
 		this.menu = menu;
 		this.order = order;
 		this.bill = bill;
+	}
+	
+	@Override
+	public boolean equals(Object otherObject)
+	{
+		if (this == otherObject) 
+			return true;
+		if (otherObject == null) 
+			return false;
+		if (getClass() != otherObject.getClass())
+			return false;
+		Client other = (Client) otherObject;
+		return Objects.equals(menu, other.menu)  &&
+				Objects.equals(order, other.order) &&
+				Objects.equals(bill, other.bill) &&
+				cash == other.cash && paid == other.paid;
+	}
+
+	
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(cash, paid, menu, order, bill);
+	}
+
+	@Override 
+	public String toString()
+	{
+		return "Client with " + cash + "$, which has paid =  " + paid;
 	}
 	
 	public void setMenu(Menu menu)

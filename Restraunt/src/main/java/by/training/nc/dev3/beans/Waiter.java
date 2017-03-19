@@ -1,5 +1,7 @@
 package by.training.nc.dev3.beans;
 
+import java.util.Objects;
+
 import by.training.nc.dev3.enums.*;
 import by.training.nc.dev3.interfaces.WaiterActions;
 
@@ -17,6 +19,34 @@ public class Waiter extends Staff implements WaiterActions {
 	{
 		super();
 		this.status = status;
+	}
+	
+	@Override
+	public boolean equals(Object otherObject)
+	{
+		if (this == otherObject) 
+			return true;
+		if (otherObject == null) 
+			return false;
+		if (getClass() != otherObject.getClass())
+			return false;
+		Waiter other = (Waiter) otherObject;
+		return Objects.equals(status, other.status)  &&
+				ordered == other.ordered && name == other.name &&
+				id == other.id;
+	}
+
+	
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(status, ordered, name, id);
+	}
+
+	@Override 
+	public String toString()
+	{
+		return "Waiter " + name + " with id = " + id + " is " + status;
 	}
 	
 	public void setStatus(Statuses status)

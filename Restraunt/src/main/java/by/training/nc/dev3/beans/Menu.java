@@ -13,6 +13,44 @@ public class Menu {
 		listOfFood = new HashMap<Food, Integer>();
 		
 	}
+	
+
+	
+	@Override
+	public boolean equals(Object otherObject)
+	{
+		if (this == otherObject) 
+			return true;
+		if (otherObject == null) 
+			return false;
+		if (getClass() != otherObject.getClass())
+			return false;
+		Menu other = (Menu) otherObject;
+		return Objects.equals(listOfFood, other.listOfFood);
+	}
+
+	
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(listOfFood);
+	}
+
+	@Override 
+	public String toString()
+	{
+		Iterator it = listOfFood.entrySet().iterator();
+		while (it.hasNext())
+		{
+			Map.Entry pair = (Map.Entry)it.next();
+			
+			Food f = (Food)pair.getKey();
+			System.out.println(f.getName() + " = " + pair.getValue());
+			it.remove();
+		}
+		return " ";
+	}
+
 
 	public void setListOfFood(Map<Food, Integer> listOfFood)
 	{
@@ -47,15 +85,17 @@ public class Menu {
 		
 		Map mp = m1.getListOfFood();
 		
-		Iterator it = mp.entrySet().iterator();
-		while (it.hasNext())
-		{
-			Map.Entry pair = (Map.Entry)it.next();
-			
-			Food f = (Food)pair.getKey();
-			System.out.println(f.getName() + " = " + pair.getValue());
-			it.remove();
-		}
+		System.out.println(m1);
+		
+//		Iterator it = mp.entrySet().iterator();
+//		while (it.hasNext())
+//		{
+//			Map.Entry pair = (Map.Entry)it.next();
+//			
+//			Food f = (Food)pair.getKey();
+//			System.out.println(f.getName() + " = " + pair.getValue());
+//			it.remove();
+//		}
 		
 		
 	}

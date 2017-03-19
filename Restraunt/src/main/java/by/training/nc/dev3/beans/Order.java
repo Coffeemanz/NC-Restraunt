@@ -19,6 +19,33 @@ public class Order {
 		this.resultValue = resultValue;
 	} 
 	
+	@Override
+	public boolean equals(Object otherObject)
+	{
+		if (this == otherObject) 
+			return true;
+		if (otherObject == null) 
+			return false;
+		if (getClass() != otherObject.getClass())
+			return false;
+		Order other = (Order) otherObject;
+		return Objects.equals(resultOrder, other.resultOrder)  &&
+				resultValue == other.resultValue;
+	}
+
+	
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(resultOrder, resultValue);
+	}
+
+	@Override 
+	public String toString()
+	{
+		return "Order: " + resultOrder + " = " + resultValue;
+	}
+	
 	public void setResultOrder(List<String> resultOrder)
 	{
 		this.resultOrder = resultOrder;
