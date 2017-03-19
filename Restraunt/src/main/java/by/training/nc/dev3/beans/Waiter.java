@@ -1,10 +1,12 @@
 package by.training.nc.dev3.beans;
 
 import by.training.nc.dev3.enums.*;
+import by.training.nc.dev3.interfaces.WaiterActions;
 
-public class Waiter extends Staff {
+public class Waiter extends Staff implements WaiterActions {
 	
 	protected Statuses status;
+	protected boolean ordered = false;
 	
 	public Waiter()
 	{
@@ -27,19 +29,51 @@ public class Waiter extends Staff {
 		return status;
 	}
 	
-	public static void main(String[] args)
+	public boolean getOrdered()
 	{
-		
-		System.out.println("Running");
-		System.out.println("Running");
-		System.out.println("Running");
-		
+		return ordered;
+	}
+	
+	public boolean acceptOrder(Order order)
+	{
+		System.out.println("Let me check your order:");
+		for (String item: order.getResultOrder())
+		{
+			System.out.println(item);
+		}
+		System.out.println("And the total cost is: " + order.getResultValue());
+		ordered = true;
+		return ordered;
+	}
+	
+	public void giveBill(Bill bill)
+	{
+		System.out.println("Here's your bill");
+		System.out.println("You ordered:");
+		for (String item: bill.getResultOrder())
+		{
+			System.out.println(item);
+		}
+		System.out.println("And the total cost is: " + bill.getResultValue());
+		System.out.println("Today is " + bill.getDate());
+	}
+	
+	public void callPolice()
+	{
+		System.out.println("Oh my god! You don't have enough money!");
+		System.out.println("I'm calling 911...");
+	}
+//	public static void main(String[] args)
+//	{
+//		
+//		System.out.println("Running");
+//		
 //		Waiter wt = new Waiter();
 //		wt.setId(1);
 //		wt.setName("Sergey");
 //		wt.setStatus(Statuses.FREE);
 //		
 //		System.out.println("Waiter " + wt.getName() + " with ID " + wt.getId() + " is " + wt.getStatus());
-	}
+//	}
 
 }
