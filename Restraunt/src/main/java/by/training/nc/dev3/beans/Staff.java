@@ -4,6 +4,7 @@ public abstract class Staff {
 
 	protected String name;
 	protected Integer id;
+	protected static Integer staffCounter = 0;
 	
 	public Staff()
 	{
@@ -35,6 +36,11 @@ public abstract class Staff {
 	public Integer getId()
 	{
 		return id;
+	}
+	
+	public Integer getStaffCounter()
+	{
+		return staffCounter;
 	}
 	
 	

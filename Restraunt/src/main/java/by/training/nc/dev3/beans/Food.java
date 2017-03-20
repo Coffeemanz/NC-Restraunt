@@ -6,10 +6,12 @@ public class Food {
 
 	protected String name;
 	protected Float value;
+	protected static Integer foodCounter = 0;
 	
 	public Food()
 	{
 		super();
+		foodCounter++;
 	}
 	
 	public Food(String name, Float value)
@@ -17,6 +19,7 @@ public class Food {
 		super();
 		this.name = name;
 		this.value = value;
+		foodCounter++;
 	}
 	
 	@Override
@@ -64,6 +67,11 @@ public class Food {
 	public Float getValue()
 	{
 		return value;
+	}
+	
+	public Integer getFoodCounter()
+	{
+		return foodCounter;
 	}
 			
 	

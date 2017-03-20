@@ -6,11 +6,13 @@ import java.util.*;
 public class Menu {
 
 	protected Map<Food, Integer> listOfFood;
+	protected static Integer menuCounter = 0;
 	
 	public Menu()
 	{
 		super();
 		listOfFood = new HashMap<Food, Integer>();
+		menuCounter++;
 		
 	}
 	
@@ -45,7 +47,7 @@ public class Menu {
 			Map.Entry pair = (Map.Entry)it.next();
 			
 			Food f = (Food)pair.getKey();
-			System.out.println(f.getName() + " = " + pair.getValue());
+			System.out.println(f.getName() + " = " +  f.getValue() + "$" + ". Quantity: " + pair.getValue());
 			it.remove();
 		}
 		return " ";
@@ -70,6 +72,11 @@ public class Menu {
 	public void removeFood(Food food)
 	{
 		listOfFood.remove(food);
+	}
+	
+	public Integer getMenuCounter()
+	{
+		return menuCounter;
 	}
 	
 	public static void main(String[] args)

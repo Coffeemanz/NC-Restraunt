@@ -13,12 +13,14 @@ public class Waiter extends Staff implements WaiterActions {
 	public Waiter()
 	{
 		super();
+		staffCounter++;
 	}
 	
 	public Waiter(Statuses status)
 	{
 		super();
 		this.status = status;
+		staffCounter++;
 	}
 	
 	@Override
@@ -71,21 +73,23 @@ public class Waiter extends Staff implements WaiterActions {
 		{
 			System.out.println(item);
 		}
-		System.out.println("And the total cost is: " + order.getResultValue());
+		System.out.println("And the total cost is: " + order.getResultValue() + "$");
 		ordered = true;
 		return ordered;
 	}
 	
 	public void giveBill(Bill bill)
 	{
+		//TODO add date to giveBill
+		
 		System.out.println("Here's your bill");
 		System.out.println("You ordered:");
-		for (String item: bill.getResultOrder())
+		for (String item: bill.order.resultOrder)
 		{
 			System.out.println(item);
 		}
-		System.out.println("And the total cost is: " + bill.getResultValue());
-		System.out.println("Today is " + bill.getDate());
+		System.out.println("And the total cost is: " + bill.order.getResultValue());
+		//System.out.println("Today is " + bill.getDate());
 	}
 	
 	public void callPolice()

@@ -2,19 +2,24 @@ package by.training.nc.dev3.beans;
 
 import java.util.*;
 
-public class Bill extends Order {
+public class Bill {
 	
-	GregorianCalendar date;
+	Order order;
+	GregorianCalendar date = new GregorianCalendar();
+	protected static Integer billCounter = 0;
 	
 	public Bill()
 	{
 		super();
+		billCounter++;;
 	}
 	
-	public Bill(GregorianCalendar date)
+	public Bill(Order order, GregorianCalendar date)
 	{
 		super();
+		this.order = order;
 		this.date = date;
+		billCounter++;
 	}
 	
 	@Override
@@ -27,21 +32,31 @@ public class Bill extends Order {
 		if (getClass() != otherObject.getClass())
 			return false;
 		Bill other = (Bill) otherObject;
-		return Objects.equals(resultOrder, other.resultOrder)  &&
-				resultValue == other.resultValue && Objects.equals(date, other.date);
+		return Objects.equals(order, other.order) && Objects.equals(date, other.date);
 	}
 
 	
 	@Override
 	public int hashCode()
 	{
-		return Objects.hash(resultOrder, resultValue, date);
+		return Objects.hash(order, date);
 	}
 
 	@Override 
 	public String toString()
 	{
-		return "Bill: " + resultOrder + " = " + resultValue + "." + date;
+		//TODO add date to toString
+		return "Bill: " + order + ".";
+	}
+	
+	public void setOrder(Order order)
+	{
+		this.order = order;
+	}
+	
+	public Order getOrder()
+	{
+		return order;
 	}
 	
 	public void setDate(GregorianCalendar date)
@@ -52,6 +67,11 @@ public class Bill extends Order {
 	public GregorianCalendar getDate()
 	{
 		return date;
+	}
+	
+	public Integer getBillCounter()
+	{
+		return billCounter;
 	}
 
 }

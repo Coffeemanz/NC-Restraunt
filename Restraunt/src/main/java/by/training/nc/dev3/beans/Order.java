@@ -5,11 +5,13 @@ import java.util.*;
 public class Order {
 
 	protected List<String> resultOrder = new ArrayList<String>();
-	protected Float resultValue;
+	protected Float resultValue = 0f;
+	protected static Integer orderCounter = 0;
 	
 	public Order()
 	{
 		super();
+		orderCounter++;
 	}
 	
 	public Order(List<String> resultOrder, Float resultValue)
@@ -17,6 +19,7 @@ public class Order {
 		super();
 		this.resultOrder = resultOrder;
 		this.resultValue = resultValue;
+		orderCounter++;
 	} 
 	
 	@Override
@@ -78,6 +81,11 @@ public class Order {
 		//TODO
 		// Removing value of the position from the order
 		
+	}
+	
+	public Integer getOrderCounter()
+	{
+		return orderCounter;
 	}
 	
 	

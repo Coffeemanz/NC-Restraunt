@@ -11,10 +11,12 @@ public class Client implements ClientActions {
 	Menu menu;
 	Order order;
 	Bill bill;
+	protected static Integer clientCounter = 0;
 	
 	public Client()
 	{
 		super();
+		clientCounter++;
 	}
 	
 	
@@ -26,6 +28,7 @@ public class Client implements ClientActions {
 		this.menu = menu;
 		this.order = order;
 		this.bill = bill;
+		clientCounter++;
 	}
 	
 	@Override
@@ -55,6 +58,21 @@ public class Client implements ClientActions {
 	public String toString()
 	{
 		return "Client with " + cash + "$, which has paid =  " + paid;
+	}
+	
+	public void setCash (Float cash)
+	{
+		this.cash = cash;
+	}
+	
+	public Float getCash()
+	{
+		return cash;
+	}
+	
+	public Boolean getPaid()
+	{
+		return paid;
 	}
 	
 	public void setMenu(Menu menu)
@@ -105,7 +123,7 @@ public class Client implements ClientActions {
 		{
 			System.out.println(item);
 		}
-		System.out.println("And the total cost wiil be: " + order.getResultValue());
+		System.out.println("And the total cost will be: " + order.getResultValue() + "$");
 	}
 	
 	public void clearOrder()
@@ -119,23 +137,33 @@ public class Client implements ClientActions {
 	{
 		if (cash > order.resultValue)
 		{
-			System.out.println("I'm paynig...");
+			System.out.println("It's okay... I'm paynig...");
 			paid = true;
 		}
 		else if (cash < order.resultValue)
 		{
-			System.out.println("i don't have enough money...");
+			System.out.println("I don't have enough money...");
 			paid = false;
-		} 
+		}
+		cash -= order.resultValue;
 		return paid;
 	}
 	
 	public void tip()
 	{
-		if (paid = true)
+		if (paid == true)
 		{
 			System.out.println("I'm giving you some tips...");
 		}
+		else
+		{
+			System.out.println("Sorry, don't have money...");
+		}
+	}
+	
+	public Integer getClientCounter()
+	{
+		return clientCounter;
 	}
 	
 	
