@@ -1,7 +1,7 @@
 package by.training.nc.dev3.services;
 
 import by.training.nc.dev3.enums.*;
-import by.training.nc.dev3.exeptions.WrongValueException;
+import by.training.nc.dev3.exceptions.WrongValueException;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;

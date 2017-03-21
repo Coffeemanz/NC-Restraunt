@@ -3,7 +3,7 @@ package by.training.nc.dev3.beans;
 
 import java.util.*;
 
-import by.training.nc.dev3.exeptions.WrongValueException;
+import by.training.nc.dev3.exceptions.WrongValueException;
 
 public class Menu {
 
@@ -96,9 +96,15 @@ public class Menu {
 		Food f3 = new Food("Coconut", 8f);
 		
 		Menu m1 = new Menu();
-		m1.addFood(f1, 2);
-		m1.addFood(f2, 1);
-		m1.addFood(f3, 10);
+		try {
+			m1.addFood(f1, 2);
+			m1.addFood(f2, 1);
+			m1.addFood(f3, 10);
+		} catch (WrongValueException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 		
 		Map mp = m1.getListOfFood();
 		

@@ -2,7 +2,7 @@ package by.training.nc.dev3.interfaces;
 
 import by.training.nc.dev3.beans.Bill;
 import by.training.nc.dev3.beans.Order;
-import by.training.nc.dev3.exeptions.WrongValueException;
+import by.training.nc.dev3.exceptions.WrongValueException;
 
 public interface WaiterActions {
 	

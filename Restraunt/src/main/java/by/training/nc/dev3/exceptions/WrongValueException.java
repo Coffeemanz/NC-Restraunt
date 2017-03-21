@@ -1,4 +1,4 @@
-package by.training.nc.dev3.exeptions;
+package by.training.nc.dev3.exceptions;
 
 public class WrongValueException extends Exception {
 

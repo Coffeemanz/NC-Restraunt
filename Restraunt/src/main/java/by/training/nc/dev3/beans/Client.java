@@ -2,7 +2,7 @@ package by.training.nc.dev3.beans;
 
 import java.util.Objects;
 
-import by.training.nc.dev3.exeptions.WrongValueException;
+import by.training.nc.dev3.exceptions.WrongValueException;
 import by.training.nc.dev3.interfaces.ClientActions;
 
 public class Client implements ClientActions {

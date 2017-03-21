@@ -3,7 +3,7 @@ package by.training.nc.dev3.beans;
 import java.util.Objects;
 
 import by.training.nc.dev3.enums.*;
-import by.training.nc.dev3.exeptions.WrongValueException;
+import by.training.nc.dev3.exceptions.WrongValueException;
 import by.training.nc.dev3.interfaces.WaiterActions;
 
 public class Waiter extends Staff implements WaiterActions {
