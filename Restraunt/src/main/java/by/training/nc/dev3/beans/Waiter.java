@@ -3,6 +3,7 @@ package by.training.nc.dev3.beans;
 import java.util.Objects;
 
 import by.training.nc.dev3.enums.*;
+import by.training.nc.dev3.exeptions.WrongValueException;
 import by.training.nc.dev3.interfaces.WaiterActions;
 
 public class Waiter extends Staff implements WaiterActions {
@@ -66,8 +67,13 @@ public class Waiter extends Staff implements WaiterActions {
 		return ordered;
 	}
 	
-	public boolean acceptOrder(Order order)
+	public boolean acceptOrder(Order order) throws WrongValueException
 	{
+		if (order == null)
+		{
+			throw new WrongValueException();
+		}
+		
 		System.out.println("Let me check your order:");
 		for (String item: order.getResultOrder())
 		{
@@ -78,9 +84,13 @@ public class Waiter extends Staff implements WaiterActions {
 		return ordered;
 	}
 	
-	public void giveBill(Bill bill)
+	public void giveBill(Bill bill) throws WrongValueException
 	{
 		//TODO add date to giveBill
+		if (bill == null)
+		{
+			throw new WrongValueException();
+		}
 		
 		System.out.println("Here's your bill");
 		System.out.println("You ordered:");

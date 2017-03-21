@@ -3,6 +3,8 @@ package by.training.nc.dev3.beans;
 
 import java.util.*;
 
+import by.training.nc.dev3.exeptions.WrongValueException;
+
 public class Menu {
 
 	protected Map<Food, Integer> listOfFood;
@@ -64,13 +66,21 @@ public class Menu {
 		return listOfFood;
 	}
 	
-	public void addFood(Food food, Integer count)
+	public void addFood(Food food, Integer count) throws WrongValueException
 	{
+		if (food == null)
+		{
+			throw new WrongValueException();
+		}
 		listOfFood.put(food, count);
 	}
 	
-	public void removeFood(Food food)
+	public void removeFood(Food food) throws WrongValueException
 	{
+		if (food == null)
+		{
+			throw new WrongValueException();
+		}
 		listOfFood.remove(food);
 	}
 	

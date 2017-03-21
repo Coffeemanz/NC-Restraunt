@@ -1,11 +1,12 @@
 package by.training.nc.dev3.interfaces;
 
 import by.training.nc.dev3.beans.Food;
+import by.training.nc.dev3.exeptions.WrongValueException;
 
 public interface ClientActions {
 
-	void addToOrder(Food food);
-	void removeFromOrder(Food food);
+	void addToOrder(Food food) throws WrongValueException;
+	void removeFromOrder(Food food) throws WrongValueException;
 	void viewOrder();
 	void clearOrder();
 	Boolean pay ();

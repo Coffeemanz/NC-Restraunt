@@ -2,6 +2,7 @@ package by.training.nc.dev3.beans;
 
 import java.util.Objects;
 
+import by.training.nc.dev3.exeptions.WrongValueException;
 import by.training.nc.dev3.interfaces.ClientActions;
 
 public class Client implements ClientActions {
@@ -105,14 +106,22 @@ public class Client implements ClientActions {
 		return bill;
 	}
 	
-	public void addToOrder(Food food)
+	public void addToOrder(Food food) throws WrongValueException
 	{
+		if (food == null)
+		{
+			throw new WrongValueException();
+		}
 		order.getResultOrder().add(food.getName());
 		order.sumValue(food.getValue());
 	}
 	
-	public void removeFromOrder(Food food)
+	public void removeFromOrder(Food food) throws WrongValueException
 	{
+		if (food == null)
+		{
+			throw new WrongValueException();
+		}
 		order.removePosition(food.getName());
 	}
 	
