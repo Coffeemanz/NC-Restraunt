@@ -1,7 +1,12 @@
 package by.training.nc.dev3.services;
 
+import java.io.InvalidObjectException;
+
 import by.training.nc.dev3.beans.*;
 import by.training.nc.dev3.exceptions.WrongValueException;
+import by.training.nc.dev3.serialization.ClientSerializer;
+import by.training.nc.dev3.serialization.MenuSerializer;
+import by.training.nc.dev3.serialization.OrderSerializer;
 import by.training.nc.dev3.services.*;
 
 public class RestrauntSystemManager {
@@ -33,73 +38,16 @@ public class RestrauntSystemManager {
 	
 	public static void startMenu()
 	{
-		Food f1 = new Food("Banana", 10f);
-		Food f2 = new Food ("Apple", 8f);
-		Food f3 = new Food("Chicken", 13f);
+		Initialization.initialize();
 		
-		Menu m1 = new Menu();
+		Client client = null;
 		try {
-			m1.addFood(f1, 10);
-			m1.addFood(f2, 19);
-			m1.addFood(f3, 1);
-		} catch (WrongValueException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		
-		//System.out.println("Hello! Today we have in menu:");
-		//System.out.println(m1);
-		
-		Client cl1 = new Client();
-		cl1.setCash(100F);
-		cl1.setMenu(m1);
-		
-		Order or1 = new Order();
-		cl1.setOrder(or1);
-		
-
-		try {
-			cl1.addToOrder(f1);
-			cl1.addToOrder(f2);
-		} catch (WrongValueException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-		
-
-		
-		Waiter wt1 = new Waiter();
-		
-		try {
-			wt1.acceptOrder(or1);
-		} catch (WrongValueException e) {
+			client = ClientSerializer.deserialization();
+		} catch (InvalidObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-
-		cl1.viewOrder();
-		
-		Bill bl1 = new Bill();
-		
-		
-		bl1.setOrder(or1);
-		//bl1.setDate(new GregorianCalendar());
-		try {
-			wt1.giveBill(bl1);
-		} catch (WrongValueException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-
-		
-		//cl1.pay();
-		//cl1.tip();
-		clientWorking(cl1);
+		clientWorking(client);
 	}
 }

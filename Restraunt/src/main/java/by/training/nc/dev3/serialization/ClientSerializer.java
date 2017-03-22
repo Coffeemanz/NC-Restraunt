@@ -14,7 +14,7 @@ import by.training.nc.dev3.beans.Menu;
 
 public class ClientSerializer {
 
-	public void serializer(Client client)
+	public static void serializer(Client client)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\client.ser";
 
@@ -33,7 +33,7 @@ public class ClientSerializer {
 		}
 	}
 	
-	public Client deserialization() throws InvalidObjectException
+	public static Client deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\client.ser";
 

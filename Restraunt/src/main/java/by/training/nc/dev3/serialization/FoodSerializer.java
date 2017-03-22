@@ -6,7 +6,7 @@ import by.training.nc.dev3.beans.Food;
 
 public class FoodSerializer {
 
-	public void serializer(Food food)
+	public static void serializer(Food food)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\food.ser";
 		try 
@@ -24,7 +24,7 @@ public class FoodSerializer {
 		}
 	}
 	
-	public Food deserialization() throws InvalidObjectException
+	public static Food deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\food.ser";
 		ObjectInputStream os = null;

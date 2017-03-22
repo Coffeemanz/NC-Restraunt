@@ -14,7 +14,7 @@ import by.training.nc.dev3.beans.Menu;
 
 public class MenuSerializer {
 	
-	public void serializer(Menu menu)
+	public static void serializer(Menu menu)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\menu.ser";
 
@@ -33,7 +33,7 @@ public class MenuSerializer {
 		}
 	}
 	
-	public Menu deserialization() throws InvalidObjectException
+	public static Menu deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\menu.ser";
 

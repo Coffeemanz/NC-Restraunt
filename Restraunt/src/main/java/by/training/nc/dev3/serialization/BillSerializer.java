@@ -14,7 +14,7 @@ import by.training.nc.dev3.beans.Menu;
 
 public class BillSerializer {
 	
-	public void serializer(Bill bill)
+	public static void serializer(Bill bill)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\bill.ser";
 		try 
@@ -32,7 +32,7 @@ public class BillSerializer {
 		}
 	}
 	
-	public Bill deserialization() throws InvalidObjectException
+	public static Bill deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\bill.ser";
 		ObjectInputStream os = null;

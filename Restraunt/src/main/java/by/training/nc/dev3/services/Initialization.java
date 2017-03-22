@@ -15,9 +15,8 @@ import by.training.nc.dev3.serialization.*;
 //Initialization With serialization
 public class Initialization {
 
-	public static void main(String[] main)
+	public static void initialize()
 	{
-		System.out.println("NOW IN INIT CLASS");
 		
 		Food f1 = new Food("Banana", 3f);
 		Food f2 = new Food ("Apple", 2f);
@@ -45,55 +44,56 @@ public class Initialization {
 		} catch (WrongValueException e1) {
 			e1.printStackTrace();
 		}
-		MenuSerializer ms = new MenuSerializer();
-		ms.serializer(m);
-		Menu m_new = null;
-		try {
-			m_new= ms.deserialization();
-		} catch (InvalidObjectException e) {
-			e.printStackTrace();
-		}
+		MenuSerializer.serializer(m);
+//		Menu m_new = null;
+//		try {
+//			m_new = MenuSerializer.deserialization();
+//		} catch (InvalidObjectException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 		
 		Order o = new Order();
-		OrderSerializer os = new OrderSerializer();
-		os.serializer(o);
-		Order o_new = null;
-		try {
-			o_new = os.deserialization();
-		} catch (InvalidObjectException e) {
-			// TODO Auto-generated catch block
-		}
+		OrderSerializer.serializer(o);
+//		Order o_new = null;
+//		try {
+//			o_new = OrderSerializer.deserialization();
+//		} catch (InvalidObjectException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
 		
 		Bill b = new Bill();
 		b.setOrder(o);
-		BillSerializer bs = new BillSerializer();
-		bs.serializer(b);
-		Bill b_new = null;
-		try {
-			b_new = bs.deserialization();
-		} catch (InvalidObjectException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		BillSerializer.serializer(b);
+//		Bill b_new = null;
+//		try {
+//			b_new = BillSerializer.deserialization();
+//		} catch (InvalidObjectException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
 		
 		Client c = new Client(50F, m, o, b);
-		ClientSerializer cs = new ClientSerializer();
-		cs.serializer(c);
-		Client c_new = null;
-		try {
-			c_new = cs.deserialization();
-		} catch (InvalidObjectException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ClientSerializer.serializer(c);
+//		Client c_new = null;
+//		try {
+//			c_new = ClientSerializer.deserialization();
+//		} catch (InvalidObjectException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 		
 	
 		
-		System.out.println(m_new);
-		System.out.println(o_new);
-		System.out.println(b_new);
-		System.out.println(c_new);
-		System.out.println(c_new.getMenu());
+//		System.out.println(m_new);
+//		System.out.println(o_new);
+//		System.out.println(b_new);
+//		System.out.println(c_new);
+//		System.out.println(c_new.getMenu());
 		
 		
 		
@@ -167,14 +167,7 @@ public class Initialization {
 //		
 //		System.out.println(cl1.getClientCounter() + " " + f1.getFoodCounter() + " " + or1.getOrderCounter() + " " + m1.getMenuCounter() + " " + bl1.getBillCounter() +  " " + wt1.getStaffCounter());
 		
-		
-		
-		
 		//System.out.println(cl1);
-		
-		
-		
-		
 		
 	}
 	

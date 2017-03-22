@@ -12,9 +12,9 @@ import java.io.ObjectOutputStream;
 import by.training.nc.dev3.beans.Menu;
 import by.training.nc.dev3.beans.Waiter;
 
-public class WaiterSerializer {
+public  class WaiterSerializer {
 	
-	public void serializer(Waiter waiter)
+	public static void serializer(Waiter waiter)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\waiter.ser";
 
@@ -33,7 +33,7 @@ public class WaiterSerializer {
 		}
 	}
 	
-	public Waiter deserialization() throws InvalidObjectException
+	public static Waiter deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\waiter.ser";
 

@@ -14,7 +14,7 @@ import by.training.nc.dev3.beans.Order;
 
 public class OrderSerializer {
 	
-	public void serializer(Order order)
+	public static void serializer(Order order)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\order.ser";
 
@@ -33,7 +33,7 @@ public class OrderSerializer {
 		}
 	}
 	
-	public Order deserialization() throws InvalidObjectException
+	public static Order deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\order.ser";
 
