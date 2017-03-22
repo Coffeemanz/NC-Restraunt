@@ -1,8 +1,9 @@
 package by.training.nc.dev3.beans;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Food {
+public class Food implements Serializable {
 
 	protected String name;
 	protected Float value;

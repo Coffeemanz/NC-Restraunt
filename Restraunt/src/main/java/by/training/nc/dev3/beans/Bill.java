@@ -1,8 +1,9 @@
 package by.training.nc.dev3.beans;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Bill {
+public class Bill implements Serializable {
 	
 	Order order;
 	GregorianCalendar date = new GregorianCalendar();

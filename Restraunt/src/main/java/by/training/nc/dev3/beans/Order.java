@@ -1,8 +1,9 @@
 package by.training.nc.dev3.beans;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Order {
+public class Order implements Serializable {
 
 	protected List<String> resultOrder = new ArrayList<String>();
 	protected Float resultValue = 0f;

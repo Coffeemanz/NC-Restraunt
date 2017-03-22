@@ -1,11 +1,12 @@
 package by.training.nc.dev3.beans;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import by.training.nc.dev3.exceptions.WrongValueException;
 import by.training.nc.dev3.interfaces.ClientActions;
 
-public class Client implements ClientActions {
+public class Client implements ClientActions, Serializable {
 	
 	protected Float cash;
 	protected Boolean paid = false;

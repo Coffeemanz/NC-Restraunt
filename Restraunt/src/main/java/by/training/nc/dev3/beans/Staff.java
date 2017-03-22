@@ -1,6 +1,8 @@
 package by.training.nc.dev3.beans;
 
-public abstract class Staff {
+import java.io.Serializable;
+
+public abstract class Staff implements Serializable {
 
 	protected String name;
 	protected Integer id;

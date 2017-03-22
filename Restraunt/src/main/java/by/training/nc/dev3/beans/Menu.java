@@ -1,11 +1,12 @@
 package by.training.nc.dev3.beans;
 
 
+import java.io.Serializable;
 import java.util.*;
 
 import by.training.nc.dev3.exceptions.WrongValueException;
 
-public class Menu {
+public class Menu implements Serializable {
 
 	protected Map<Food, Integer> listOfFood;
 	protected static Integer menuCounter = 0;
