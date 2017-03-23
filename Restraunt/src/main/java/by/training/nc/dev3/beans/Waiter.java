@@ -1,19 +1,25 @@
 package by.training.nc.dev3.beans;
 
+import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 import by.training.nc.dev3.enums.*;
 import by.training.nc.dev3.exceptions.WrongValueException;
 import by.training.nc.dev3.interfaces.WaiterActions;
 
+/**
+ * Waiter class
+ * 
+ * @author Сергей
+ *
+ */
+
 public class Waiter extends Staff implements WaiterActions {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4858642704328668251L;
 	protected Statuses status;
 	protected boolean ordered = false;
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
 	
 	public Waiter()
 	{
@@ -79,6 +85,11 @@ public class Waiter extends Staff implements WaiterActions {
 		return ordered;
 	}
 	
+	
+	/**
+	 * Accept the total order and check it
+	 * 
+	 */
 	public boolean acceptOrder(Order order) throws WrongValueException
 	{
 		if (order == null)
@@ -96,6 +107,11 @@ public class Waiter extends Staff implements WaiterActions {
 		return ordered;
 	}
 	
+	
+	/**
+	 * Give the total bill to the client
+	 * 
+	 */
 	public void giveBill(Bill bill) throws WrongValueException
 	{
 		//TODO add date to giveBill
@@ -111,9 +127,14 @@ public class Waiter extends Staff implements WaiterActions {
 			System.out.println(item);
 		}
 		System.out.println("And the total cost is: " + bill.order.getResultValue());
-		//System.out.println("Today is " + bill.getDate());
+		System.out.println("Today is " + sdf.format(bill.getDate().getTime()));
 	}
 	
+	
+	/**
+	 * Call the police if the client doesn't have enough money
+	 * 
+	 */
 	public void callPolice()
 	{
 		System.out.println("Oh my god! You don't have enough money!");

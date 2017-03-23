@@ -12,8 +12,22 @@ import java.io.ObjectOutputStream;
 import by.training.nc.dev3.beans.Food;
 import by.training.nc.dev3.beans.Menu;
 
+
+/**
+ * 
+ * Serialization for Menu objects
+ * 
+ * @author Сергей
+ *
+ */
 public class MenuSerializer {
 	
+	
+	/**
+	 * Serializes the Menu object
+	 * 
+	 * @param bill
+	 */
 	public static void serializer(Menu menu)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\menu.ser";
@@ -33,6 +47,14 @@ public class MenuSerializer {
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * Deserializes the Menu object
+	 * 
+	 * @return
+	 * @throws InvalidObjectException
+	 */
 	public static Menu deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\menu.ser";

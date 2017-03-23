@@ -3,11 +3,14 @@ package by.training.nc.dev3.beans;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Food implements Serializable {
+/**
+ * Food class
+ * @author Сергей
+ *
+ */
+public class Food implements Serializable, Comparable<Food> {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 4518959062556062616L;
 	protected String name;
 	protected Float value;
@@ -52,6 +55,22 @@ public class Food implements Serializable {
 	public String toString()
 	{
 		return "Food: " + name + " = " + value;
+	}
+	
+	/**
+	 * Compares two instances of food-class
+	 * @param food - food to compare
+	 * 
+	 * 
+	 */
+	public int compareTo(Food food)
+	{
+		if (this.getValue() > food.getValue())
+			return 1;
+		else if (this.getValue() < food.getValue())
+			return -1;
+		else 
+			return 0;
 	}
 
 	public void setName(String name)

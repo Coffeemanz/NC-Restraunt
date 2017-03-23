@@ -3,10 +3,23 @@ package by.training.nc.dev3.services;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
+/**
+ * Some commands to interact with the cmmsnd line
+ * 
+ * @author Сергей
+ *
+ */
 public class ClientUtils {
 	
 	private static Scanner scanner;
 	
+	
+	/**
+	 * Gets the number
+	 * 
+	 * @return
+	 */
 	public static int getNumber()
 	{
 		int chosen = -1;
@@ -35,6 +48,12 @@ public class ClientUtils {
 		return chosen;
 	}
 	
+	
+	/**
+	 * Gets the String
+	 * 
+	 * @return
+	 */
 	public static String getString()
 	{
 		String input;

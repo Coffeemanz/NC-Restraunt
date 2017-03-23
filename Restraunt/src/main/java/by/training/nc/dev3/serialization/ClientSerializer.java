@@ -12,8 +12,21 @@ import java.io.ObjectOutputStream;
 import by.training.nc.dev3.beans.Client;
 import by.training.nc.dev3.beans.Menu;
 
+/**
+ * 
+ * Serialization for Client objects
+ * 
+ * @author Сергей
+ *
+ */
 public class ClientSerializer {
 
+	
+	/**
+	 * Serializes the Client object
+	 * 
+	 * @param bill
+	 */
 	public static void serializer(Client client)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\client.ser";
@@ -33,6 +46,14 @@ public class ClientSerializer {
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * Deserializes the Bill object
+	 * 
+	 * @return
+	 * @throws InvalidObjectException
+	 */
 	public static Client deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\client.ser";

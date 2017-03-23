@@ -6,11 +6,15 @@ import java.util.*;
 
 import by.training.nc.dev3.exceptions.WrongValueException;
 
+/**
+ * 
+ * Menu class
+ * @author Сергей
+ *
+ */
+
 public class Menu implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8404088619328906342L;
 	//protected Map<Food, Integer> listOfFood;
 	protected List<Food> listOfFood = new ArrayList<Food>();
@@ -85,6 +89,13 @@ public class Menu implements Serializable {
 		return listOfFood;
 	}
 	
+	
+	/**
+	 * 
+	 * Add food to the current menu
+	 * @param food
+	 * @throws WrongValueException
+	 */
 	public void addFood(Food food) throws WrongValueException
 	{
 		if (food == null)
@@ -94,6 +105,12 @@ public class Menu implements Serializable {
 		listOfFood.add(food);
 	}
 	
+	/**
+	 * Remove food from the current menu 
+	 * 
+	 * @param food
+	 * @throws WrongValueException
+	 */
 	public void removeFood(Food food) throws WrongValueException
 	{
 		if (food == null)

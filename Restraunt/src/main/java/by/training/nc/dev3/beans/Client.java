@@ -1,16 +1,22 @@
 package by.training.nc.dev3.beans;
 
 import java.io.Serializable;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 
 import by.training.nc.dev3.exceptions.WrongValueException;
 import by.training.nc.dev3.interfaces.ClientActions;
 
+/**
+ * Class Client. Holds all tne necessary to work with Client instance(<b>cash</b>,
+ * <b>menu</b>, <b>order</b>, <b>bill</b>).
+ * @author Сергей
+ *
+ */
+
 public class Client implements ClientActions, Serializable {
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 2679491248481851265L;
 	protected Float cash;
 	protected Boolean paid = false;
@@ -19,6 +25,10 @@ public class Client implements ClientActions, Serializable {
 	Bill bill;
 	protected static Integer clientCounter = 0;
 	
+	/**Creates new empty object 
+	 * @see Client#Client(Float, Menu, Order, Bill)
+	 * 
+	 *  */
 	public Client()
 	{
 		super();
@@ -26,7 +36,14 @@ public class Client implements ClientActions, Serializable {
 	}
 	
 	
-
+	/**Creates new empty object 
+	 * @see Client#Client()
+	 * 
+	 * @param cash - total money
+	 * @param menu - menu
+	 * @param order - order
+	 * @bill - bill
+	 *  */
 	public Client(Float cash, Menu menu, Order order, Bill bill )
 	{
 		super();
@@ -37,6 +54,9 @@ public class Client implements ClientActions, Serializable {
 		clientCounter++;
 	}
 	
+	/**
+	 * Equals method
+	 * */
 	@Override
 	public boolean equals(Object otherObject)
 	{
@@ -53,24 +73,38 @@ public class Client implements ClientActions, Serializable {
 				cash == other.cash && paid == other.paid;
 	}
 
-	
+	/**
+	 * hashCode method
+	 * */
 	@Override
 	public int hashCode()
 	{
 		return Objects.hash(cash, paid, menu, order, bill);
 	}
 
+	/**
+	 * toString() method
+	 * */
 	@Override 
 	public String toString()
 	{
 		return "Client with " + cash + "$, which has paid =  " + paid;
 	}
 	
+	
+	/**
+	 * Sets the cash
+	 * @param cash - total money
+	 * */
 	public void setCash (Float cash)
 	{
 		this.cash = cash;
 	}
 	
+	/**
+	 * Returns cash
+	 * 
+	 * */
 	public Float getCash()
 	{
 		return cash;
@@ -81,36 +115,67 @@ public class Client implements ClientActions, Serializable {
 		return paid;
 	}
 	
+	/**
+	 * Sets the menu
+	 * @param menu - menu
+	 * */
 	public void setMenu(Menu menu)
 	{
 		this.menu = menu;
 	}
 	
+	/**
+	 * Returns the menu
+	 *
+	 * */
 	public Menu getMenu()
 	{
 		return menu;
 	}
 	
+	/**
+	 * Sets the order
+	 * @param order - order
+	 * */
 	public void setOrder(Order order)
 	{
 		this.order = order;
 	}
 	
+	
+	/**
+	 * Returns the order
+	 * 
+	 * */
 	public Order getOrder()
 	{
 		return order;
 	}
 	
+	/**
+	 * Sets the bill
+	 * @param bill - bill
+	 * */
 	public void setBill(Bill bill)
 	{
 		this.bill = bill;
 	}
 	
+	
+	/**
+	 * Returns the bill
+	 * 
+	 * */
 	public Bill getBill()
 	{
 		return bill;
 	}
 	
+	
+	/**
+	 * Adds food to the total order
+	 * @param food - food to add
+	 * */
 	public void addToOrder(Food food) throws WrongValueException
 	{
 		if (food == null)
@@ -121,6 +186,11 @@ public class Client implements ClientActions, Serializable {
 		order.sumValue(food.getValue());
 	}
 	
+	
+	/**
+	 * Removes the food from the order
+	 * @param food - food
+	 * */
 	public void removeFromOrder(Food food) throws WrongValueException
 	{
 		if (food == null)
@@ -130,6 +200,10 @@ public class Client implements ClientActions, Serializable {
 		order.removePosition(food);
 	}
 	
+	/**
+	 * To view all the order
+	 * 
+	 * */
 	public void viewOrder()
 	{
 		System.out.println("I've ordered:");
@@ -140,12 +214,22 @@ public class Client implements ClientActions, Serializable {
 		System.out.println("And the total cost will be: " + order.getResultValue() + "$");
 	}
 	
+	
+	/**
+	 * To clear all the order
+	 * 
+	 * */
 	public void clearOrder()
 	{
 		order.resultOrder.clear();
 		order.resultValue = 0f;
 	} 
 	
+	
+	/**
+	 * Pay fot the food 
+	 * 
+	 * */
 	
 	public Boolean pay()
 	{
@@ -163,6 +247,11 @@ public class Client implements ClientActions, Serializable {
 		return paid;
 	}
 	
+	/**
+	 * Give tip if you have enough money
+	 * 
+	 * */
+	
 	public void tip()
 	{
 		if (paid == true)
@@ -174,6 +263,10 @@ public class Client implements ClientActions, Serializable {
 			System.out.println("Sorry, don't have money...");
 		}
 	}
+	
+	/**
+	 * Return the total number of Client-objects
+	 * */
 	
 	public Integer getClientCounter()
 	{

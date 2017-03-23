@@ -4,8 +4,22 @@ import java.io.*;
 
 import by.training.nc.dev3.beans.Food;
 
+
+/**
+ * 
+ * Serialization for Food objects
+ * 
+ * @author Сергей
+ *
+ */
 public class FoodSerializer {
 
+	
+	/**
+	 * Serializes the Food object
+	 * 
+	 * @param bill
+	 */
 	public static void serializer(Food food)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\food.ser";
@@ -24,6 +38,14 @@ public class FoodSerializer {
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * Deserializes the Food object
+	 * 
+	 * @return
+	 * @throws InvalidObjectException
+	 */
 	public static Food deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\food.ser";

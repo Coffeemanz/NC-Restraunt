@@ -12,8 +12,22 @@ import java.io.ObjectOutputStream;
 import by.training.nc.dev3.beans.Menu;
 import by.training.nc.dev3.beans.Waiter;
 
+
+/**
+ * 
+ * Serialization for Order objects
+ * 
+ * @author Сергей
+ *
+ */
 public  class WaiterSerializer {
 	
+	
+	/**
+	 * Serializes the Waiter object
+	 * 
+	 * @param bill
+	 */
 	public static void serializer(Waiter waiter)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\waiter.ser";
@@ -33,6 +47,14 @@ public  class WaiterSerializer {
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * Deserializes the Waiter object
+	 * 
+	 * @return
+	 * @throws InvalidObjectException
+	 */
 	public static Waiter deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\waiter.ser";

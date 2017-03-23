@@ -12,8 +12,21 @@ import java.io.ObjectOutputStream;
 import by.training.nc.dev3.beans.Bill;
 import by.training.nc.dev3.beans.Menu;
 
+/**
+ * 
+ * Serialization for Bill objects
+ * 
+ * @author Сергей
+ *
+ */
+
 public class BillSerializer {
 	
+	/**
+	 * Serializes the Bill object
+	 * 
+	 * @param bill
+	 */
 	public static void serializer(Bill bill)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\bill.ser";
@@ -32,6 +45,14 @@ public class BillSerializer {
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * Deserializes the Bill object
+	 * 
+	 * @return
+	 * @throws InvalidObjectException
+	 */
 	public static Bill deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\bill.ser";

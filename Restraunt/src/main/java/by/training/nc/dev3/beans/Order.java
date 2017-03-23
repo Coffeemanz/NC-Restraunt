@@ -3,6 +3,13 @@ package by.training.nc.dev3.beans;
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * Order class
+ * 
+ * @author Сергей
+ *
+ */
+
 public class Order implements Serializable {
 	
 
@@ -75,11 +82,23 @@ public class Order implements Serializable {
 		return resultValue;
 		
 	}	
+	
+	/**
+	 * Sum to the total value
+	 * 
+	 * @param val
+	 */
 	public void sumValue(Float val)
 	{
 		resultValue += val;
 	}
 	
+	
+	/**
+	 * Remove one position from the total order
+	 * 
+	 * @param food
+	 */
 	public void removePosition(Food food)
 	{
 		resultOrder.remove(food.getName());

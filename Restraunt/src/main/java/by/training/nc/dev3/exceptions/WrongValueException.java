@@ -1,5 +1,12 @@
 package by.training.nc.dev3.exceptions;
 
+
+/**
+ * Class-exception to check input
+ * 
+ * @author Сергей
+ *
+ */
 public class WrongValueException extends Exception {
 
 

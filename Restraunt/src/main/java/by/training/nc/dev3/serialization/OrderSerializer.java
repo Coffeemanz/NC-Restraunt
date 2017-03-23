@@ -12,8 +12,22 @@ import java.io.ObjectOutputStream;
 import by.training.nc.dev3.beans.Menu;
 import by.training.nc.dev3.beans.Order;
 
+
+/**
+ * 
+ * Serialization for Order objects
+ * 
+ * @author Сергей
+ *
+ */
 public class OrderSerializer {
 	
+	
+	/**
+	 * Serializes the Order object
+	 * 
+	 * @param bill
+	 */
 	public static void serializer(Order order)
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\order.ser";
@@ -33,6 +47,14 @@ public class OrderSerializer {
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * Deserializes the Order object
+	 * 
+	 * @return
+	 * @throws InvalidObjectException
+	 */
 	public static Order deserialization() throws InvalidObjectException
 	{
 		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\order.ser";

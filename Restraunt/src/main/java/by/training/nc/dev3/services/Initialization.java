@@ -13,6 +13,15 @@ import by.training.nc.dev3.serialization.*;
 
 
 //Initialization With serialization
+
+/**
+ * 
+ * Initialization class
+ * 
+ * 
+ * @author Сергей
+ *
+ */
 public class Initialization {
 
 	public static void initialize()

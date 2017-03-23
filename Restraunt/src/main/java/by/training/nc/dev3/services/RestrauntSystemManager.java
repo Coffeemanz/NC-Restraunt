@@ -15,6 +15,15 @@ import by.training.nc.dev3.serialization.OrderSerializer;
 import by.training.nc.dev3.serialization.WaiterSerializer;
 import by.training.nc.dev3.services.*;
 
+
+/**
+ * 
+ * The class contains menu to interact with command line.
+ * 
+ * @author Сергей
+ *
+ */
+
 public class RestrauntSystemManager {
 
 	public static void clientWorking(Client client, Waiter waiter)
@@ -141,29 +150,7 @@ public class RestrauntSystemManager {
 	{
 		Initialization.initialize();
 		
-//		Menu menu = null;
-//		try {
-//			menu = MenuSerializer.deserialization();
-//		} catch (InvalidObjectException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		Order order = null;
-//		try {
-//			order = OrderSerializer.deserialization();
-//		} catch (InvalidObjectException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		Bill bill = null;
-//		try {
-//			bill = BillSerializer.deserialization();
-//		} catch (InvalidObjectException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
 		Waiter waiter = null;
 		try {
 			waiter = WaiterSerializer.deserialization();
