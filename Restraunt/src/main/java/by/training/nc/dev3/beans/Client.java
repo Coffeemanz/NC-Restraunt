@@ -211,7 +211,7 @@ public class Client implements ClientActions, Serializable {
 		{
 			System.out.println(item);
 		}
-		System.out.println("And the total cost will be: " + order.getResultValue() + "$");
+		//System.out.println("And the total cost will be: " + order.getResultValue() + "$");
 	}
 	
 	

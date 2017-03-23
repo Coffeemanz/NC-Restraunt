@@ -54,7 +54,7 @@ public class Food implements Serializable, Comparable<Food> {
 	@Override 
 	public String toString()
 	{
-		return "Food: " + name + " = " + value;
+		return name + " = " + value + "$";
 	}
 	
 	/**

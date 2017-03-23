@@ -29,6 +29,11 @@ public class RestrauntSystemManager {
 	public static void clientWorking(Client client, Waiter waiter)
 	{
 		System.out.println("Welcome to out restraunt!");
+		System.out.println("How much cash do you have?");
+		Float inputCash = (float) ClientUtils.getNumber();
+		client.setCash(inputCash);
+		
+		
 		System.out.println("What would you like to do?");
 		while(true)
 		{
@@ -42,6 +47,7 @@ public class RestrauntSystemManager {
 			case 1:
 				System.out.println("Today we have in menu:");
 				System.out.println(client.getMenu());
+				System.out.println("---------------------");
 				while(true)
 				{
 					System.out.println("1. What would you like to add to order?");
@@ -49,7 +55,10 @@ public class RestrauntSystemManager {
 					System.out.println("3. View the order.");
 					System.out.println("4. Clear the order.");
 					System.out.println("5. Accept the order.");
+					System.out.println("6. View the menu");
+					System.out.println("7. View the cash");
 					System.out.println("0. Exit.");
+					System.out.println("---------------------");
 					
 					switch(ClientUtils.getNumber())
 					{
@@ -57,6 +66,7 @@ public class RestrauntSystemManager {
 						String inputFoodAdd= ClientUtils.getString();
 						for (Food food : client.getMenu().getListOfFood())
 						{
+							
 							if (inputFoodAdd.equals(food.getName()))
 							{
 								try {
@@ -67,6 +77,7 @@ public class RestrauntSystemManager {
 								}
 							}
 						}
+						System.out.println("---------------------");
 						break;
 					case 2:
 						String inputFoodRemove = ClientUtils.getString();
@@ -84,7 +95,8 @@ public class RestrauntSystemManager {
 						}
 						break;
 					case 3:
-						System.out.println(client.getOrder());
+						client.viewOrder();
+						System.out.println("---------------------");
 						break;
 					case 4:
 						client.clearOrder();
@@ -96,12 +108,15 @@ public class RestrauntSystemManager {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						System.out.println("---------------------");
 						System.out.println("What would you like to do next?");
 						while(true)
 						{
 							System.out.println("1. View bill");
 							System.out.println("2. Pay");
 							System.out.println("3. Give tip");
+							System.out.println("0. Exit");
+							System.out.println("---------------------");
 							switch(ClientUtils.getNumber())
 							{
 							case 1:
@@ -111,17 +126,36 @@ public class RestrauntSystemManager {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
+								System.out.println("---------------------");
 								break;
 							case 2:
-								client.pay();
+								if (!client.pay())
+								{
+									System.out.println("---------------------");
+									waiter.callPolice();
+									System.exit(0);
+								}
 								break;
 							case 3:
 								client.tip();
+								System.out.println("---------------------");
+								break;
+							case 0:
+								System.out.println("Good bye!");
+								System.exit(0);
+								break;
+							default:
+								System.out.println("You should choose something.");
 								break;
 							}
 						}
-						
-						
+					case 6:
+						System.out.println(client.getMenu());
+						break;
+					case 7:
+						System.out.println("I have " +  client.getCash() + "$");
+						System.out.println("---------------------");
+						break;
 					case 0:
 						System.out.println("Good bye!");
 						System.exit(0);

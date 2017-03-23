@@ -126,7 +126,7 @@ public class Waiter extends Staff implements WaiterActions {
 		{
 			System.out.println(item);
 		}
-		System.out.println("And the total cost is: " + bill.order.getResultValue());
+		System.out.println("And the total cost is: " + bill.order.getResultValue() + "$");
 		System.out.println("Today is " + sdf.format(bill.getDate().getTime()));
 	}
 	
