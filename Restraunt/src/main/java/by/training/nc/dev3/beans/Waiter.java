@@ -8,6 +8,10 @@ import by.training.nc.dev3.interfaces.WaiterActions;
 
 public class Waiter extends Staff implements WaiterActions {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4858642704328668251L;
 	protected Statuses status;
 	protected boolean ordered = false;
 	
@@ -22,6 +26,14 @@ public class Waiter extends Staff implements WaiterActions {
 		super();
 		this.status = status;
 		staffCounter++;
+	}
+	
+	public Waiter (String name, Integer id, Statuses status)
+	{
+		super();
+		this.name = name;
+		this.id = id;
+		this.status = status;
 	}
 	
 	@Override
@@ -79,7 +91,7 @@ public class Waiter extends Staff implements WaiterActions {
 		{
 			System.out.println(item);
 		}
-		System.out.println("And the total cost is: " + order.getResultValue() + "$");
+		//System.out.println("And the total cost is: " + order.getResultValue() + "$");
 		ordered = true;
 		return ordered;
 	}
@@ -92,8 +104,8 @@ public class Waiter extends Staff implements WaiterActions {
 			throw new WrongValueException();
 		}
 		
-		System.out.println("Here's your bill");
-		System.out.println("You ordered:");
+		System.out.println("Here's your bill.");
+		System.out.println("You've ordered:");
 		for (String item: bill.order.resultOrder)
 		{
 			System.out.println(item);

@@ -34,5 +34,14 @@ public class ClientUtils {
 		
 		return chosen;
 	}
+	
+	public static String getString()
+	{
+		String input;
+		Scanner scanner = new Scanner(System.in);
+		input = scanner.nextLine();
+		input.trim();
+		return input;
+	}
 
 }

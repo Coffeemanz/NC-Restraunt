@@ -5,6 +5,10 @@ import java.util.*;
 
 public class Bill implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3837117297855240736L;
 	Order order;
 	GregorianCalendar date = new GregorianCalendar();
 	protected static Integer billCounter = 0;

@@ -8,13 +8,26 @@ import by.training.nc.dev3.exceptions.WrongValueException;
 
 public class Menu implements Serializable {
 
-	protected Map<Food, Integer> listOfFood;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8404088619328906342L;
+	//protected Map<Food, Integer> listOfFood;
+	protected List<Food> listOfFood = new ArrayList<Food>();
 	protected static Integer menuCounter = 0;
 	
 	public Menu()
 	{
 		super();
-		listOfFood = new HashMap<Food, Integer>();
+		menuCounter++;
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Menu(List<Food> listOfFood)
+	{
+		super();
+		this.listOfFood = listOfFood;
 		menuCounter++;
 		
 	}
@@ -44,36 +57,41 @@ public class Menu implements Serializable {
 	@Override 
 	public String toString()
 	{
-		Iterator it = listOfFood.entrySet().iterator();
-		while (it.hasNext())
+//			Iterator it = listOfFood.entrySet().iterator();
+//			while (it.hasNext())
+//			{
+//				Map.Entry pair = (Map.Entry)it.next();
+//				
+//				Food f = (Food)pair.getKey();
+//				System.out.println(f.getName() + " = " +  f.getValue() + "$" + ". Quantity: " + pair.getValue());
+//				it.remove();
+//			}
+		
+		for (Food food : listOfFood)
 		{
-			Map.Entry pair = (Map.Entry)it.next();
-			
-			Food f = (Food)pair.getKey();
-			System.out.println(f.getName() + " = " +  f.getValue() + "$" + ". Quantity: " + pair.getValue());
-			it.remove();
+			System.out.println(food);
 		}
-		return " ";
+		return "";
 	}
 
 
-	public void setListOfFood(Map<Food, Integer> listOfFood)
+	public void setListOfFood(List<Food> listOfFood)
 	{
 		this.listOfFood = listOfFood;
 	}
 	
-	public Map<Food, Integer> getListOfFood()
+	public List<Food> getListOfFood()
 	{
 		return listOfFood;
 	}
 	
-	public void addFood(Food food, Integer count) throws WrongValueException
+	public void addFood(Food food) throws WrongValueException
 	{
 		if (food == null)
 		{
 			throw new WrongValueException();
 		}
-		listOfFood.put(food, count);
+		listOfFood.add(food);
 	}
 	
 	public void removeFood(Food food) throws WrongValueException
@@ -89,40 +107,5 @@ public class Menu implements Serializable {
 	{
 		return menuCounter;
 	}
-	
-	public static void main(String[] args)
-	{
-		Food f1 = new Food("Banana", 10f);
-		Food f2 = new Food("Apple", 5f);
-		Food f3 = new Food("Coconut", 8f);
-		
-		Menu m1 = new Menu();
-		try {
-			m1.addFood(f1, 2);
-			m1.addFood(f2, 1);
-			m1.addFood(f3, 10);
-		} catch (WrongValueException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-		
-		Map mp = m1.getListOfFood();
-		
-		System.out.println(m1);
-		
-//		Iterator it = mp.entrySet().iterator();
-//		while (it.hasNext())
-//		{
-//			Map.Entry pair = (Map.Entry)it.next();
-//			
-//			Food f = (Food)pair.getKey();
-//			System.out.println(f.getName() + " = " + pair.getValue());
-//			it.remove();
-//		}
-		
-		
-	}
-	
 		
 }

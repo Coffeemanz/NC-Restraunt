@@ -8,6 +8,10 @@ import by.training.nc.dev3.interfaces.ClientActions;
 
 public class Client implements ClientActions, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2679491248481851265L;
 	protected Float cash;
 	protected Boolean paid = false;
 	Menu menu;
@@ -123,7 +127,7 @@ public class Client implements ClientActions, Serializable {
 		{
 			throw new WrongValueException();
 		}
-		order.removePosition(food.getName());
+		order.removePosition(food);
 	}
 	
 	public void viewOrder()

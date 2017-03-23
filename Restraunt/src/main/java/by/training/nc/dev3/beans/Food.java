@@ -5,6 +5,10 @@ import java.util.Objects;
 
 public class Food implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4518959062556062616L;
 	protected String name;
 	protected Float value;
 	protected static Integer foodCounter = 0;

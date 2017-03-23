@@ -4,7 +4,12 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Order implements Serializable {
+	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1898768821501953278L;
 	protected List<String> resultOrder = new ArrayList<String>();
 	protected Float resultValue = 0f;
 	protected static Integer orderCounter = 0;
@@ -75,9 +80,10 @@ public class Order implements Serializable {
 		resultValue += val;
 	}
 	
-	public void removePosition(String name)
+	public void removePosition(Food food)
 	{
-		resultOrder.remove(name);
+		resultOrder.remove(food.getName());
+		resultValue -= food.getValue();
 		
 		//TODO
 		// Removing value of the position from the order
