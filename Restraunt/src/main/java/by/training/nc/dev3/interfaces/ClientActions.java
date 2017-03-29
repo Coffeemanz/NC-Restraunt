@@ -10,6 +10,6 @@ public interface ClientActions {
 	void viewOrder();
 	void clearOrder();
 	Boolean pay ();
-	void tip();
+	void tip(int inputNumber);
 	
 }

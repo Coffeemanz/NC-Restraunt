@@ -110,6 +110,11 @@ public class Client implements ClientActions, Serializable {
 		return cash;
 	}
 	
+	public void setPaid(Boolean paid)
+	{
+		this.paid = paid;
+	}
+	
 	public Boolean getPaid()
 	{
 		return paid;
@@ -184,6 +189,7 @@ public class Client implements ClientActions, Serializable {
 		}
 		order.getResultOrder().add(food.getName());
 		order.sumValue(food.getValue());
+		cash -= food.getValue();
 	}
 	
 	
@@ -198,6 +204,7 @@ public class Client implements ClientActions, Serializable {
 			throw new WrongValueException();
 		}
 		order.removePosition(food);
+		cash += food.getValue();
 	}
 	
 	/**
@@ -221,6 +228,7 @@ public class Client implements ClientActions, Serializable {
 	 * */
 	public void clearOrder()
 	{
+		cash += order.resultValue;
 		order.resultOrder.clear();
 		order.resultValue = 0f;
 	} 
@@ -233,17 +241,16 @@ public class Client implements ClientActions, Serializable {
 	
 	public Boolean pay()
 	{
-		if (cash > order.resultValue)
-		{
-			System.out.println("It's okay... I'm paynig...");
-			paid = true;
-		}
-		else if (cash < order.resultValue)
-		{
-			System.out.println("I don't have enough money...");
-			paid = false;
-		}
-		cash -= order.resultValue;
+
+		System.out.println("It's okay... I'm paynig...");
+		paid = true;
+
+//		else if (cash < order.resultValue)
+//		{
+//			System.out.println("I don't have enough money...");
+//			paid = false;
+//		}
+		//cash -= order.resultValue;
 		return paid;
 	}
 	
@@ -252,17 +259,19 @@ public class Client implements ClientActions, Serializable {
 	 * 
 	 * */
 	
-	public void tip()
+	public void tip(int inputNumber)
 	{
-		if (paid == true)
-		{
+	if (inputNumber <= cash)
+			{
 			System.out.println("I'm giving you some tips...");
+			cash -= inputNumber;
+			}
+			else
+			{
+				System.out.println("Sorry, don't have money...");
+			}
 		}
-		else
-		{
-			System.out.println("Sorry, don't have money...");
-		}
-	}
+	
 	
 	/**
 	 * Return the total number of Client-objects

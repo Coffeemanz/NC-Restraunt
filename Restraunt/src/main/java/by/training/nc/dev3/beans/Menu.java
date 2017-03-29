@@ -71,9 +71,9 @@ public class Menu implements Serializable {
 //				it.remove();
 //			}
 		
-		for (Food food : listOfFood)
+		for (int i = 0; i < listOfFood.size(); i++)
 		{
-			System.out.println(food);
+			System.out.println(i + 1 + ". " + listOfFood.get(i));
 		}
 		return "";
 	}

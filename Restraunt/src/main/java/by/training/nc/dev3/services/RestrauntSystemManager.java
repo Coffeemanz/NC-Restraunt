@@ -42,12 +42,14 @@ public class RestrauntSystemManager {
 			System.out.println("0. Exit");
 			System.out.println("---------------------");
 
+			out:
 			switch (ClientUtils.getNumber())
 			{
 			case 1:
 				System.out.println("Today we have in menu:");
 				System.out.println(client.getMenu());
 				System.out.println("---------------------");
+				
 				while(true)
 				{
 					System.out.println("1. What would you like to add to order?");
@@ -63,94 +65,238 @@ public class RestrauntSystemManager {
 					switch(ClientUtils.getNumber())
 					{
 					case 1:
-						String inputFoodAdd= ClientUtils.getString();
-						for (Food food : client.getMenu().getListOfFood())
+//						String inputFoodAdd= ClientUtils.getString();
+//						for (Food food : client.getMenu().getListOfFood())
+//						{
+//							
+//							if (inputFoodAdd.equals(food.getName()))
+//							{
+//								try {
+//									client.addToOrder(food);
+//								} catch (WrongValueException e) {
+//									// TODO Auto-generated catch block
+//									e.printStackTrace();
+//								}
+//							}
+//						}
+						System.out.println("Please, choose something from the menu:");
+						System.out.println(client.getMenu());
+						
+						int inputNumber = ClientUtils.getNumber();
+
+						if ( inputNumber > 0 && inputNumber <= client.getMenu().getListOfFood().size())
 						{
-							
-							if (inputFoodAdd.equals(food.getName()))
+							if (client.getCash() >= client.getMenu().getListOfFood().get(inputNumber - 1).getValue())
 							{
-								try {
-									client.addToOrder(food);
-								} catch (WrongValueException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
+							try {
+								client.addToOrder(client.getMenu().getListOfFood().get(inputNumber - 1));
+							} catch (WrongValueException e) {
+								System.out.println("You are trying to add a wrong value!");
+							}
+							
+							System.out.println("You've ordered: " + client.getMenu().getListOfFood().get(inputNumber - 1).getName());
+							}
+							else if (client.getCash() < client.getMenu().getListOfFood().get(inputNumber - 1).getValue())
+							{
+								System.out.println("You don't have enough money for this. Sorry...");
 							}
 						}
+						else 
+						{
+							System.out.println("No such meal in our menu! Please, try again or choose another option.");
+							
+						}					
 						System.out.println("---------------------");
 						break;
 					case 2:
-						String inputFoodRemove = ClientUtils.getString();
-						for (Food food : client.getMenu().getListOfFood())
+						if (!client.getOrder().getResultOrder().isEmpty())
 						{
-							if (inputFoodRemove.equals(food.getName()))
+							System.out.println("Your order is:");
+							for (int i = 0; i < client.getOrder().getResultOrder().size(); i++)
 							{
-								try {
-									client.removeFromOrder(food);
-								} catch (WrongValueException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
+								System.out.println( i + 1 + ". " + client.getOrder().getResultOrder().get(i));
+							} 
+							System.out.println("What would you like to remove?");
+							
+							int inputNumber1 = ClientUtils.getNumber();
+	
+							if ( inputNumber1 > 0 && inputNumber1 <= client.getOrder().getResultOrder().size())
+							{
+								String removeFood = client.getOrder().getResultOrder().get(inputNumber1 - 1);
+								
+								for (Food food: client.getMenu().getListOfFood())
+								{
+									if (removeFood.equals(food.getName()))
+									{
+										try {
+											client.removeFromOrder(food);
+											System.out.println("You've removed: " + food.getName());
+										} catch (WrongValueException e) {
+											System.out.println("You are trying to add a wrong value!");
+										}
+									}
 								}
+								
+								
 							}
+							else 
+							{
+								System.out.println("No such meal in your order! Please, try again or choose another option.");
+								
+							}	
 						}
+						else 
+						{
+							System.out.println("Your order is empty. You have nothing to remove.");
+						}
+						System.out.println("---------------------");
+						
+						
+//						String inputFoodRemove = ClientUtils.getString();
+//						for (Food food : client.getMenu().getListOfFood())
+//						{
+//							if (inputFoodRemove.equals(food.getName()))
+//							{
+//								try {
+//									client.removeFromOrder(food);
+//								} catch (WrongValueException e) {
+//									System.out.println("You are trying to remove a wrong value!");
+//								}
+//							}
+//						}
 						break;
 					case 3:
-						client.viewOrder();
+						if (!client.getOrder().getResultOrder().isEmpty())
+						{
+							client.viewOrder();
+						}
+						else
+						{
+							System.out.println("Your order is empty.");
+						}
+						
 						System.out.println("---------------------");
 						break;
 					case 4:
-						client.clearOrder();
+						if (!client.getOrder().getResultOrder().isEmpty())
+						{
+							client.clearOrder();
+							System.out.println("Removed all from the order.");
+						}
+						else
+						{
+							System.out.println("Your order is empty. You have nothing to remove.");
+						}
+						
+						System.out.println("---------------------");
 						break;
 					case 5:
-						try {
-							waiter.acceptOrder(client.getOrder());
-						} catch (WrongValueException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						System.out.println("---------------------");
-						System.out.println("What would you like to do next?");
-						while(true)
+						if (!client.getOrder().getResultOrder().isEmpty())
 						{
-							System.out.println("1. View bill");
-							System.out.println("2. Pay");
-							System.out.println("3. Give tip");
-							System.out.println("0. Exit");
+							try {
+								waiter.acceptOrder(client.getOrder());
+							} catch (WrongValueException e) {
+								System.out.println("You are trying to add a wrong value!");
+							}
 							System.out.println("---------------------");
-							switch(ClientUtils.getNumber())
+							System.out.println("What would you like to do next?");
+							while(true)
 							{
-							case 1:
-								try {
-									waiter.giveBill(client.getBill());
-								} catch (WrongValueException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
+								System.out.println("1. View bill");
+								System.out.println("2. Pay");
+								System.out.println("3. Give tip");
+								System.out.println("4. Make another order");
+								System.out.println("0. Exit");
 								System.out.println("---------------------");
-								break;
-							case 2:
-								if (!client.pay())
+								switch(ClientUtils.getNumber())
 								{
+								case 1:
+									try {
+										waiter.giveBill(client.getBill());
+									} catch (WrongValueException e) {
+										System.out.println("You are trying to add a wrong value!");;
+									}
 									System.out.println("---------------------");
-									waiter.callPolice();
-									System.exit(0);
+									break;
+								case 2:
+//									if (!client.pay())
+//									{
+//										System.out.println("---------------------");
+//										waiter.callPolice();
+//										System.exit(0);
+//									}
+									
+									if (client.getPaid()) 
+									{
+										System.out.println("I've already paid for this...");
+									}
+									else 
+									{
+										client.pay();
+										System.out.println("And now I have " +  client.getCash() + "$");
+										System.out.println("---------------------");
+									}
+									break;
+								case 3:
+									
+									if (client.getPaid())
+									{
+										System.out.println("How much tips do you want to give?");
+										int inputTip = ClientUtils.getNumber();
+										client.tip(inputTip);
+										System.out.println("And now I have " +  client.getCash() + "$");
+										System.out.println("---------------------");
+									}
+									else
+									{
+										System.out.println("I haven't paid for the bill yet.");
+									}
+									System.out.println("---------------------");
+									break;
+								case 4:
+									if (client.getPaid())
+									{
+										Float currentOrderValue = client.getOrder().getResultValue();
+										client.clearOrder();
+										client.setCash(client.getCash() - currentOrderValue);
+										client.setPaid(false);
+										break out;
+									}
+									else 
+									{
+										System.out.println("You should pay for this order first...");
+										System.out.println("---------------------");
+									}
+									break;
+										
+								case 0:
+									if (client.getPaid())
+									{
+										System.out.println("Good bye!");
+										System.exit(0);
+									}
+									else
+									{
+										System.out.println("You should pay for this order before exiting...");
+										System.out.println("---------------------");
+									}
+									break;
+								default:
+									System.out.println("You should choose something.");
+									break;
 								}
-								break;
-							case 3:
-								client.tip();
-								System.out.println("---------------------");
-								break;
-							case 0:
-								System.out.println("Good bye!");
-								System.exit(0);
-								break;
-							default:
-								System.out.println("You should choose something.");
-								break;
 							}
 						}
+						else
+						{
+							System.out.println("You have nothing to accept. Your order is empty.");
+							
+						}
+						System.out.println("---------------------");
+						break;
 					case 6:
 						System.out.println(client.getMenu());
+						System.out.println("---------------------");
 						break;
 					case 7:
 						System.out.println("I have " +  client.getCash() + "$");
@@ -159,9 +305,12 @@ public class RestrauntSystemManager {
 					case 0:
 						System.out.println("Good bye!");
 						System.exit(0);
+						
+						
 						break;
 					default:
 						System.out.println("You should choose something.");
+						System.out.println("---------------------");
 						break;
 						
 					}
@@ -173,6 +322,7 @@ public class RestrauntSystemManager {
 				break;
 			default:
 				System.out.println("You should choose something.");
+				System.out.println("---------------------");
 				break;
 			}
 			
@@ -189,16 +339,14 @@ public class RestrauntSystemManager {
 		try {
 			waiter = WaiterSerializer.deserialization();
 		} catch (InvalidObjectException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Incorrect object for deserialization");
 		}
 		
 		Client client = null;
 		try {
 			client = ClientSerializer.deserialization();
 		} catch (InvalidObjectException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Incorrect object for deserialization");
 		}
 		
 		

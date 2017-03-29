@@ -77,7 +77,7 @@ public  class WaiterSerializer {
 		{
 			System.err.println(e);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("Can't match class");
 		}
 		finally	
 		{

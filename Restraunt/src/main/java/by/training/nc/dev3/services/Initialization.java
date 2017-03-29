@@ -54,7 +54,7 @@ public class Initialization {
 			m.addFood(f10);
 			m.addFood(f11);
 		} catch (WrongValueException e1) {
-			e1.printStackTrace();
+			System.out.println("You should enter a correct value.");
 		}
 		//MenuSerializer.serializer(m);
 //		Menu m_new = null;
