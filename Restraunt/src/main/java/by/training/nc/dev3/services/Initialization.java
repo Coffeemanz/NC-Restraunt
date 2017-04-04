@@ -56,36 +56,14 @@ public class Initialization {
 		} catch (WrongValueException e1) {
 			System.out.println("You should enter a correct value.");
 		}
-		//MenuSerializer.serializer(m);
-//		Menu m_new = null;
-//		try {
-//			m_new = MenuSerializer.deserialization();
-//		} catch (InvalidObjectException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-		
+
 		Order o = new Order();
-		//OrderSerializer.serializer(o);
-//		Order o_new = null;
-//		try {
-//			o_new = OrderSerializer.deserialization();
-//		} catch (InvalidObjectException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+
 		
 		
 		Bill b = new Bill();
 		b.setOrder(o);
-		//BillSerializer.serializer(b);
-//		Bill b_new = null;
-//		try {
-//			b_new = BillSerializer.deserialization();
-//		} catch (InvalidObjectException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+
 		
 		
 		Client c = new Client(25F, m, o, b);
@@ -94,13 +72,7 @@ public class Initialization {
 		
 		Waiter w = new Waiter("Petrov Sasha", 23, Statuses.FREE);
 		WaiterSerializer.serializer(w);
-//		Client c_new = null;
-//		try {
-//			c_new = ClientSerializer.deserialization();
-//		} catch (InvalidObjectException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
 		
 	}
 	

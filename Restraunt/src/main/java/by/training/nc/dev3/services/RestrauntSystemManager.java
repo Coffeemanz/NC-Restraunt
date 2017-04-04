@@ -28,7 +28,7 @@ public class RestrauntSystemManager {
 
 	public static void clientWorking(Client client, Waiter waiter)
 	{
-		System.out.println("Welcome to out restraunt!");
+		System.out.println("Welcome to our restraunt!");
 		System.out.println("How much cash do you have?");
 		Float inputCash = (float) ClientUtils.getNumber();
 		client.setCash(inputCash);
@@ -65,20 +65,7 @@ public class RestrauntSystemManager {
 					switch(ClientUtils.getNumber())
 					{
 					case 1:
-//						String inputFoodAdd= ClientUtils.getString();
-//						for (Food food : client.getMenu().getListOfFood())
-//						{
-//							
-//							if (inputFoodAdd.equals(food.getName()))
-//							{
-//								try {
-//									client.addToOrder(food);
-//								} catch (WrongValueException e) {
-//									// TODO Auto-generated catch block
-//									e.printStackTrace();
-//								}
-//							}
-//						}
+
 						System.out.println("Please, choose something from the menu:");
 						System.out.println(client.getMenu());
 						
@@ -98,7 +85,7 @@ public class RestrauntSystemManager {
 							}
 							else if (client.getCash() < client.getMenu().getListOfFood().get(inputNumber - 1).getValue())
 							{
-								System.out.println("You don't have enough money for this. Sorry...");
+								System.out.println("You don't have enough money for this. Please, try again or choose something else...");
 							}
 						}
 						else 
@@ -152,18 +139,7 @@ public class RestrauntSystemManager {
 						System.out.println("---------------------");
 						
 						
-//						String inputFoodRemove = ClientUtils.getString();
-//						for (Food food : client.getMenu().getListOfFood())
-//						{
-//							if (inputFoodRemove.equals(food.getName()))
-//							{
-//								try {
-//									client.removeFromOrder(food);
-//								} catch (WrongValueException e) {
-//									System.out.println("You are trying to remove a wrong value!");
-//								}
-//							}
-//						}
+
 						break;
 					case 3:
 						if (!client.getOrder().getResultOrder().isEmpty())
@@ -229,6 +205,7 @@ public class RestrauntSystemManager {
 									if (client.getPaid()) 
 									{
 										System.out.println("I've already paid for this...");
+										System.out.println("---------------------");
 									}
 									else 
 									{
@@ -356,21 +333,4 @@ public class RestrauntSystemManager {
 	}
 }
 
-//Iterator it = client.getMenu().getListOfFood().entrySet().iterator();
-//while (it.hasNext())
-//{
-//	Map.Entry pair = (Map.Entry)it.next();
-//	
-//	Food f = (Food)pair.getKey();
-//	//System.out.println(f.getName() + " = " +  f.getValue() + "$" + ". Quantity: " + pair.getValue());
-//	if (inputFood == f.getName())
-//	{
-//		try {
-//			client.addToOrder(f);
-//		} catch (WrongValueException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-//	it.remove();
-//
+
