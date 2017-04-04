@@ -28,13 +28,17 @@ public class MenuSerializer {
 	 * 
 	 * @param bill
 	 */
+	
+	private final static String ROOT_DIRECTORY_PATH = "src/main/java/by/training/nc/dev3/files/input/";
+	private final static String FILE_EXTENSION = ".ser";	
+	
 	public static void serializer(Menu menu)
 	{
-		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\menu.ser";
+		String fileName = ROOT_DIRECTORY_PATH + "menu" + FILE_EXTENSION; 
 
 		try 
 		{
-			FileOutputStream fs = new FileOutputStream(filename);
+			FileOutputStream fs = new FileOutputStream(fileName);
 			ObjectOutputStream os = new ObjectOutputStream(fs);
 			os.writeObject(menu);
 			os.close();
@@ -57,12 +61,12 @@ public class MenuSerializer {
 	 */
 	public static Menu deserialization() throws InvalidObjectException
 	{
-		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\menu.ser";
+		String fileName = ROOT_DIRECTORY_PATH + "menu" + FILE_EXTENSION; 
 
 		ObjectInputStream os = null;
 		try 
 		{
-			FileInputStream fs = new FileInputStream(filename);
+			FileInputStream fs = new FileInputStream(fileName);
 			os = new ObjectInputStream(fs);
 			Object ob = os.readObject();
 			Menu m = (Menu) ob;

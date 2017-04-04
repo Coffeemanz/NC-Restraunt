@@ -28,13 +28,17 @@ public class OrderSerializer {
 	 * 
 	 * @param bill
 	 */
+	
+	private final static String ROOT_DIRECTORY_PATH = "src/main/java/by/training/nc/dev3/files/input/";
+	private final static String FILE_EXTENSION = ".ser";
+	
 	public static void serializer(Order order)
 	{
-		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\order.ser";
+		String fileName = ROOT_DIRECTORY_PATH + "order" + FILE_EXTENSION; 
 
 		try 
 		{
-			FileOutputStream fs = new FileOutputStream(filename);
+			FileOutputStream fs = new FileOutputStream(fileName);
 			ObjectOutputStream os = new ObjectOutputStream(fs);
 			os.writeObject(order);
 			os.close();
@@ -57,12 +61,12 @@ public class OrderSerializer {
 	 */
 	public static Order deserialization() throws InvalidObjectException
 	{
-		String filename = "C:\\Users\\Сергей\\workspace\\netcracker\\NC-Restraunt\\Restraunt\\src\\main\\java\\by\\training\\nc\\dev3\\files\\input\\order.ser";
+		String fileName = ROOT_DIRECTORY_PATH + "order" + FILE_EXTENSION; 
 
 		ObjectInputStream os = null;
 		try 
 		{
-			FileInputStream fs = new FileInputStream(filename);
+			FileInputStream fs = new FileInputStream(fileName);
 			os = new ObjectInputStream(fs);
 			Object ob = os.readObject();
 			Order o = (Order) ob;

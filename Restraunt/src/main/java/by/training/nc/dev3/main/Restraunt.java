@@ -16,7 +16,6 @@ public class Restraunt {
 	public static void main(String[] args)
 	{
 		RestrauntSystemManager.startMenu();
-		
-	
+
 	}
 }
