@@ -27,12 +27,12 @@ public class FoodSerializer {
 	public static void serializer(Food food)
 	{
 		String fileName = ROOT_DIRECTORY_PATH + "food" + FILE_EXTENSION; 
+		ObjectOutputStream os = null;
 		try 
 		{
 			FileOutputStream fs = new FileOutputStream(fileName);
-			ObjectOutputStream os = new ObjectOutputStream(fs);
+			os = new ObjectOutputStream(fs);
 			os.writeObject(food);
-			os.close();
 		}
 		catch (NotSerializableException e)
 		{
@@ -40,6 +40,21 @@ public class FoodSerializer {
 		} catch (IOException e) {
 			System.err.println(e);;
 		}
+		finally	
+		{
+			try 
+			{
+				if (os != null)
+				{
+					os.close();
+				}
+			}
+			catch (IOException e)
+			{
+				System.err.println("Error with closing the flow!");
+			}
+		}
+		
 	}
 	
 	

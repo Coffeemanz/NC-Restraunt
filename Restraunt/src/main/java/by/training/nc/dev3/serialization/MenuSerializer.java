@@ -35,19 +35,33 @@ public class MenuSerializer {
 	public static void serializer(Menu menu)
 	{
 		String fileName = ROOT_DIRECTORY_PATH + "menu" + FILE_EXTENSION; 
+		ObjectOutputStream os = null;
 
 		try 
 		{
 			FileOutputStream fs = new FileOutputStream(fileName);
-			ObjectOutputStream os = new ObjectOutputStream(fs);
+			os = new ObjectOutputStream(fs);
 			os.writeObject(menu);
-			os.close();
 		}
 		catch (NotSerializableException e)
 		{
 			System.out.println("Object can't be serialized!");
 		} catch (IOException e) {
 			System.err.println(e);;
+		}
+		finally	
+		{
+			try 
+			{
+				if (os != null)
+				{
+					os.close();
+				}
+			}
+			catch (IOException e)
+			{
+				System.err.println("Error with closing the flow!");
+			}
 		}
 	}
 	

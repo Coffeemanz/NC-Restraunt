@@ -35,19 +35,33 @@ public class OrderSerializer {
 	public static void serializer(Order order)
 	{
 		String fileName = ROOT_DIRECTORY_PATH + "order" + FILE_EXTENSION; 
+		ObjectOutputStream os = null;
 
 		try 
 		{
 			FileOutputStream fs = new FileOutputStream(fileName);
-			ObjectOutputStream os = new ObjectOutputStream(fs);
+			os = new ObjectOutputStream(fs);
 			os.writeObject(order);
-			os.close();
 		}
 		catch (NotSerializableException e)
 		{
 			System.out.println("Object can't be serialized!");
 		} catch (IOException e) {
 			System.err.println(e);;
+		}
+		finally	
+		{
+			try 
+			{
+				if (os != null)
+				{
+					os.close();
+				}
+			}
+			catch (IOException e)
+			{
+				System.err.println("Error with closing the flow!");
+			}
 		}
 	}
 	
