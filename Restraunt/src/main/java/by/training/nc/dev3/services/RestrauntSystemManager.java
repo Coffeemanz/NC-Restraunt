@@ -28,6 +28,8 @@ public class RestrauntSystemManager {
 
 	public static void clientWorking(Client client, Waiter waiter)
 	{
+		ClientManager clientManager = new ClientManager(client);
+		
 		System.out.println("Welcome to our restraunt!");
 		System.out.println("How much cash do you have?");
 		Float inputCash = (float) ClientUtils.getNumber();
@@ -76,7 +78,8 @@ public class RestrauntSystemManager {
 							if (client.getCash() >= client.getMenu().getListOfFood().get(inputNumber - 1).getValue())
 							{
 							try {
-								client.addToOrder(client.getMenu().getListOfFood().get(inputNumber - 1));
+								//client.addToOrder(client.getMenu().getListOfFood().get(inputNumber - 1));
+								clientManager.addToOrder(client.getMenu().getListOfFood().get(inputNumber - 1));
 							} catch (WrongValueException e) {
 								System.out.println("You are trying to add a wrong value!");
 							}
@@ -116,7 +119,8 @@ public class RestrauntSystemManager {
 									if (removeFood.equals(food.getName()))
 									{
 										try {
-											client.removeFromOrder(food);
+											//client.removeFromOrder(food);
+											clientManager.removeFromOrder(food);
 											System.out.println("You've removed: " + food.getName());
 										} catch (WrongValueException e) {
 											System.out.println("You are trying to add a wrong value!");
@@ -144,7 +148,8 @@ public class RestrauntSystemManager {
 					case 3:
 						if (!client.getOrder().getResultOrder().isEmpty())
 						{
-							client.viewOrder();
+							//client.viewOrder();
+							clientManager.viewOrder();
 						}
 						else
 						{
@@ -156,7 +161,8 @@ public class RestrauntSystemManager {
 					case 4:
 						if (!client.getOrder().getResultOrder().isEmpty())
 						{
-							client.clearOrder();
+							//client.clearOrder();
+							clientManager.clearOrder();
 							System.out.println("Removed all from the order.");
 						}
 						else
@@ -209,7 +215,8 @@ public class RestrauntSystemManager {
 									}
 									else 
 									{
-										client.pay();
+										//client.pay();
+										clientManager.pay();
 										System.out.println("And now I have " +  client.getCash() + "$");
 										System.out.println("---------------------");
 									}
@@ -220,7 +227,8 @@ public class RestrauntSystemManager {
 									{
 										System.out.println("How much tips do you want to give?");
 										int inputTip = ClientUtils.getNumber();
-										client.tip(inputTip);
+										//client.tip(inputTip);
+										clientManager.tip(inputTip);
 										System.out.println("And now I have " +  client.getCash() + "$");
 										System.out.println("---------------------");
 									}
@@ -234,7 +242,8 @@ public class RestrauntSystemManager {
 									if (client.getPaid())
 									{
 										Float currentOrderValue = client.getOrder().getResultValue();
-										client.clearOrder();
+										//client.clearOrder();
+										clientManager.clearOrder();
 										client.setCash(client.getCash() - currentOrderValue);
 										client.setPaid(false);
 										break out;
